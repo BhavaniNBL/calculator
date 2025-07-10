@@ -45,11 +45,11 @@ def calculator():
             print(f"Error: Division by zero in expression: '{expr}'")
         except SyntaxError:
             print(f"Error: The expression '{expr}' looks incomplete or broken.")
-            print("💡 Try something like '5 + 2' or '3 * (2 + 1)'")
+            print("Try something like '5 + 2' or '3 * (2 + 1)'")
         except TypeError as e:
             if "'int' object is not callable" in str(e):
                 print(f"Oops! You're using a number like a function in '{expr}'.")
-                print("💡 Did you mean to multiply? Try: (3) * (3) instead of (3)(3)")
+                print("Did you mean to multiply? Try: (3) * (3) instead of (3)(3)")
             else:
                 print(f"Type Error: {e}")
         except Exception as e:
