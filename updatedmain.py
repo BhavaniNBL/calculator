@@ -15,7 +15,7 @@ def calculator():
         expr = input("Enter your math expression: ")
 
         if not expr:
-            print("❌ You didn't type anything. Please enter a math expression like 2 + 3 * 4")
+            print("You didn't type anything. Please enter a math expression like 2 + 3 * 4")
             continue
 
         # Check if expression has only valid characters
@@ -30,7 +30,13 @@ def calculator():
         except ZeroDivisionError:
             print(f"Error: Division by zero in expression: '{expr}'")
         except SyntaxError:
-            print(f"Error: The expression '{expr}' is not mathematically correct.")
+            print(f"Error: The expression '{expr}' looks incomplete or broken. Make sure it’s a complete math equation like '5 + 2' or '3 * (2 + 1)'")
+        except TypeError as e:
+            if "'int' object is not callable" in str(e):
+                print(f"❌ Oops! You're using a number like a function in '{expr}'.")
+                print("💡 Did you mean to multiply? Try: (3) * (3) instead of (3)(3)")
+            else:
+                print(f"Type Error: {e}")
         except Exception as e:
             print(f"Error while evaluating '{expr}': {str(e)}")
 
